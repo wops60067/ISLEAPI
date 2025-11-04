@@ -43,7 +43,7 @@ namespace ISLE.Services
             bool idPasswordValid = BCrypt.Net.BCrypt.Verify(password,(string)user.password_hash);
             if(!idPasswordValid) return null;
 
-            return{
+            return new{
                 ID = user.id,
                 Name = user.name,
                 Email = user.email
