@@ -1,16 +1,23 @@
+using Microsoft.IdentityModel.Tokens; 
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;              
+using System.Text;   
 using ISLE.Interfaces;
 using Dapper;
 using System.Data;
+using Microsoft.Extensions.Configuration; 
 
 namespace ISLE.Services
 {
     public class UserService:IUserService
     {
         private readonly IDbConnection _db;
+        private readonly IConfiguration _config;
 
-        public UserService(IDbConnection db)
+        public UserService(IDbConnection db,IConfiguration config)
         {
             _db = db;
+            _config = config;
         }
         //驗證
         public bool EmailExists(string email)
@@ -43,11 +50,35 @@ namespace ISLE.Services
             bool idPasswordValid = BCrypt.Net.BCrypt.Verify(password,(string)user.password_hash);
             if(!idPasswordValid) return null;
 
+            var token = GenerateJwtToken(user.id, user.email, user.name);
             return new{
                 ID = user.id,
                 Name = user.name,
-                Email = user.email
+                Email = user.email,
+                Token = token
             };
+        }
+        private string GenerateJwtToken(int userId, string email, string name)
+        {
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, email),
+                new Claim(JwtRegisteredClaimNames.UniqueName, name)
+            };
+
+            var token = new JwtSecurityToken(
+                issuer: _config["Jwt:Issuer"],
+                audience: _config["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(1), // token 有效時間
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
