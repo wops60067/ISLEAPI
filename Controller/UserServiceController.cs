@@ -27,7 +27,7 @@ namespace ISLE.Controllers
             return Ok(new{ message = "User registered successfully."});
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
             var user = _userService.Login(request.Email, request.Password);

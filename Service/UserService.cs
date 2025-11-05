@@ -35,7 +35,7 @@ namespace ISLE.Services
         //登入
         public object? Login(string email, string password)
         {
-            var sql = "select id,name,email,password from Users WHERE email = @Email";
+            var sql = "select id,name,email,password_hash from Users WHERE email = @Email";
             var user = _db.QueryFirstOrDefault<dynamic>(sql ,new { Email = email });
 
             if(user == null) return null;
