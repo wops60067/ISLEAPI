@@ -78,6 +78,10 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapControllers();
 
+// ✅ 關鍵：使用 EB 環境變數 PORT，監聽所有 IP
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://0.0.0.0:{port}");
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

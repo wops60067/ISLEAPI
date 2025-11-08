@@ -19,6 +19,7 @@
 /Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/K4os.Compression.LZ4.dll
 /Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/K4os.Compression.LZ4.Streams.dll
 /Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/K4os.Hash.xxHash.dll
+/Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
 /Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/Microsoft.Bcl.Cryptography.dll
@@ -100,4 +101,3 @@
 /Users/leo/Documents/GitHub/ISLEAPI/obj/Debug/net8.0/MyWebApi.pdb
 /Users/leo/Documents/GitHub/ISLEAPI/obj/Debug/net8.0/MyWebApi.genruntimeconfig.cache
 /Users/leo/Documents/GitHub/ISLEAPI/obj/Debug/net8.0/ref/MyWebApi.dll
-/Users/leo/Documents/GitHub/ISLEAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
