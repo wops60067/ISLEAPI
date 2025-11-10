@@ -22,13 +22,15 @@ builder.Services.AddScoped<IDbConnection>(sp =>
     new MySqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
-        policy.AllowAnyOrigin()   // 允許所有網域
-              .AllowAnyMethod()   // 允許所有 HTTP 方法 (GET, POST, PUT, DELETE...)
-              .AllowAnyHeader()); // 允許所有標頭
+    options.AddPolicy("AllowVercel", policy =>
+        policy.WithOrigins("https://isle-five.vercel.app")
+              .AllowAnyMethod()
+              .AllowAnyHeader());
 });
+
 //token
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -50,7 +52,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseCors("AllowAll");
+app.UseCors("AllowVercel");
 
 app.UseHttpsRedirection();
 

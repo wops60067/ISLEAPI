@@ -14,6 +14,7 @@ D:\ISLEAPI\publish\Google.Protobuf.dll
 D:\ISLEAPI\publish\K4os.Compression.LZ4.dll
 D:\ISLEAPI\publish\K4os.Compression.LZ4.Streams.dll
 D:\ISLEAPI\publish\K4os.Hash.xxHash.dll
+D:\ISLEAPI\publish\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\ISLEAPI\publish\Microsoft.AspNetCore.OpenApi.dll
 D:\ISLEAPI\publish\Microsoft.Bcl.AsyncInterfaces.dll
 D:\ISLEAPI\publish\Microsoft.Bcl.Cryptography.dll
