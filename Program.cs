@@ -22,6 +22,7 @@ builder.Services.AddScoped<IDbConnection>(sp =>
     new MySqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IMailService, MailService>();
 
 builder.Services.AddCors(options =>
 {
